@@ -11,7 +11,32 @@ ciphertext: 1111100101110001
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+int Sbox[4][4][4] = {
+  {
+    {00, 00, 01, 01},
+    {10, 10, 11, 11},
+    {00, 00, 01, 01},
+    {10, 10, 11, 11}
+  },
+  {
+    {00, 00, 00, 00},
+    {10, 10, 10, 10},
+    {01, 01, 01, 01},
+    {11, 10, 11, 11},
+  },
+  {
+    {00, 10, 01, 11},
+    {00, 10, 01, 11},
+    {00, 10, 01, 11},
+    {00, 10, 01, 11}
+  },
+  {
+    {00, 10, 01, 11},
+    {00, 01, 10, 11},
+    {00, 01, 10, 11},
+    {00, 01, 10, 11},
+  }
+};
 
 
 void Permute(int PermutationTable[], int Data[], int PermutatedData[], int arraysize){
@@ -45,17 +70,17 @@ void copy(int Data[], int Copy[], int index, int copysize){
 };
 
 
-void feistel(int newRight[], int key[], int keySize, int expansionTable[], int sbox[][4], int pbox[]){
-  printf("\nfeistel f enter:\n oldright\n");
-  PrintARRAY(newRight,8);
+void feistel(int newRight[], int key[], int keySize, int expansionTable[], int pbox[]){
+  // printf("\nfeistel f enter:\n oldright\n");
+  // PrintARRAY(newRight,8);
   int expandedRight[keySize];
   Permute(expansionTable, newRight, expandedRight, keySize);
-  printf("\nexpanded\n");
-  PrintARRAY(expandedRight,keySize);
+  // printf("\nexpanded\n");
+  // PrintARRAY(expandedRight,keySize);
   int XOResult[16];
   XOR(expandedRight,key,XOResult, keySize);
-  printf("\nxor\n");
-  PrintARRAY(XOResult,keySize);
+  // printf("\nxor\n");
+  // PrintARRAY(XOResult,keySize);
   //sbox +
   //inverse expansion
   int inverseExpandedBits[8];
@@ -69,7 +94,7 @@ void feistel(int newRight[], int key[], int keySize, int expansionTable[], int s
     //inner bits
     int column =( XOResult[iteration + 1] * 2) + XOResult[iteration + 2];
     // printf("column%d\n",column );
-    int bit = sbox[row][column];
+    int bit = Sbox[iteration/4][row][column];
     // printf("%d\n",bit);
     // firtsbit
     inverseExpandedBits[assignedbits] = bit/10;
@@ -77,23 +102,23 @@ void feistel(int newRight[], int key[], int keySize, int expansionTable[], int s
     inverseExpandedBits[assignedbits+1]=bit%10;
     assignedbits +=2;
   };
-  printf("\ninverse expanded bits:\n" );
+  printf("\nsbox + inverse expanded bits:\n" );
   PrintARRAY(inverseExpandedBits,8);
 
   //pbox
   Permute(pbox, inverseExpandedBits, newRight, 8);
-  printf("\npbox:\n");
-  PrintARRAY(newRight, 8);
-  printf("\nfeistel f exit\n" );
+  // printf("\npbox:\n");
+  // PrintARRAY(newRight, 8);
+  // printf("\nfeistel f exit\n" );
 
 
 };
 int main(){
   int ciphertext[16];
-  //int plaintext[16] = {1,0,0,0,1,1,0,0,1,0,0,0,0,0,0,0};
-  int plaintext[16] = {1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1};
-  //int key[12] = {1,1,1,0,0,0,1,1,0,0,0,0};
-  int key[12] = {1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0};
+  int plaintext[16] = {1,0,0,0,1,1,0,0,1,0,0,0,0,0,0,0};
+  //int plaintext[16] = {1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1};
+  int key[12] = {1,1,1,0,0,0,1,1,0,0,0,0};
+  //int key[12] = {1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0};
   int oldRight[8], oldLeft[8], newRight[8], newLeft[8];
   int InitialPermutation[16] = {10, 3, 4, 5, 9, 11, 13, 1, 6, 16, 2, 14, 8, 15, 7, 12};
   int FinalPermutation[16] = {8, 11, 2, 3, 4, 9, 15, 13, 5, 1, 6, 16, 7, 12, 14, 10};
@@ -105,44 +130,19 @@ int main(){
     {1, 2, 3, 3, 4, 5, 6, 6, 7, 8, 9, 9, 10, 11, 12, 12},
     {1, 2, 3, 4, 4, 5, 6, 8, 7 ,8, 9, 12, 10, 11, 12, 4}
   };
-  int Sbox[4][4][4] = {
-    {
-      {00, 00, 01, 01},
-      {10, 10, 11, 11},
-      {00, 00, 01, 01},
-      {10, 10, 11, 11}
-    },
-    {
-      {00, 00, 00, 00},
-      {10, 10, 10, 10},
-      {01, 01, 01, 01},
-      {11, 10, 11, 11},
-    },
-    {
-      {00, 10, 01, 11},
-      {00, 10, 01, 11},
-      {00, 10, 01, 11},
-      {00, 10, 01, 11}
-    },
-    {
-      {00, 10, 01, 11},
-      {00, 01, 10, 11},
-      {00, 01, 10, 11},
-      {00, 01, 10, 11},
-    }
-  };
-  printf("plaintext:");
-  PrintARRAY(plaintext, 16);
+
+  // printf("plaintext:");
+  // PrintARRAY(plaintext, 16);
   Permute(InitialPermutation, plaintext, ciphertext, 16);
-  printf("\npermutated input:");
-  PrintARRAY(ciphertext, 16);
+  // printf("\npermutated input:");
+  // PrintARRAY(ciphertext, 16);
   copy(ciphertext, oldLeft, 0, 8);
   //divide 2 parts
-  printf("\nLeft:");
-  PrintARRAY(oldLeft,8);
-  printf("\nRight:");
+  // printf("\nLeft:");
+  // PrintARRAY(oldLeft,8);
+  // printf("\nRight:");
   copy(ciphertext, oldRight, 8, 8);
-  PrintARRAY(oldRight,8);
+  // PrintARRAY(oldRight,8);
   //
   copy(oldLeft, newLeft, 0, 8);
   copy(oldRight, newRight, 0, 8);
@@ -153,23 +153,25 @@ int main(){
     printf("\n feistel iteration %d", iteration);
 
     //li = r-1
-    printf("\nold right:\n");
-    PrintARRAY(oldRight,8);
+    // printf("\nold right:\n");
+    // PrintARRAY(oldRight,8);
     copy(oldRight,newLeft, 0, 8);
-    printf("\nnewLeft:\n");
-    PrintARRAY(newLeft,8);
+    // printf("\nnewLeft:\n");
+    // PrintARRAY(newLeft,8);
 
     // permutate key
     int permutedKey[16];
     Permute(keyPermutation[iteration], key, permutedKey, 16);
-    printf("\npermuted key\n" );
-    PrintARRAY(permutedKey,16);
+    // printf("\npermuted key\n" );
+    // PrintARRAY(permutedKey,16);
 
     //feistel f
-    feistel(oldRight, permutedKey , 16, ExpansionPermutation, Sbox[iteration], Pbox);
+    feistel(oldRight, permutedKey , 16, ExpansionPermutation, Pbox);
     //xor w oldleft
-    printf("\noldLeft:\n");
-    PrintARRAY(oldLeft,8);
+    // printf("\noldLeft:\n");
+    // PrintARRAY(oldLeft,8);
+    printf("\nnewLeft:\n");
+    PrintARRAY(newLeft,8);
     XOR(oldLeft, oldRight, newRight, 8);
     printf("\nnew right:\n");
     PrintARRAY(newRight,8);

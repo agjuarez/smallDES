@@ -1,0 +1,34 @@
+
+ feistel iteration 0
+sbox + inverse expanded bits:
+1 0 1 0 0 1 0 0 
+newLeft:
+1 0 0 0 0 0 0 0 
+new right:
+1 0 0 0 1 0 1 1 
+ feistel iteration 1
+sbox + inverse expanded bits:
+1 0 1 0 0 0 1 1 
+newLeft:
+1 0 0 0 1 0 1 1 
+new right:
+0 0 1 0 0 0 1 1 
+ feistel iteration 2
+sbox + inverse expanded bits:
+0 1 0 0 0 1 1 1 
+newLeft:
+0 0 1 0 0 0 1 1 
+new right:
+1 0 1 1 0 0 1 0 
+ feistel iteration 3
+sbox + inverse expanded bits:
+1 0 1 0 0 1 1 0 
+newLeft:
+1 0 1 1 0 0 1 0 
+new right:
+1 0 1 1 0 0 0 0 
+result
+newleft
+1 0 1 1 0 0 1 0 
+newright
+1 0 1 1 0 0 0 0 

@@ -1,0 +1,26 @@
+
+ feistel iteration 0
+oldLeft:
+0 0 0 1 1 0 0 1 
+new right:
+1 0 0 0 1 0 1 1 
+ feistel iteration 1
+oldLeft:
+1 0 0 0 0 0 0 0 
+new right:
+0 0 1 0 0 0 1 1 
+ feistel iteration 2
+oldLeft:
+1 0 0 0 1 0 1 1 
+new right:
+1 0 1 1 0 0 1 0 
+ feistel iteration 3
+oldLeft:
+0 0 1 0 0 0 1 1 
+new right:
+1 0 1 1 0 0 0 0 
+result
+newleft
+1 0 1 1 0 0 1 0 
+newright
+1 0 1 1 0 0 0 0 
