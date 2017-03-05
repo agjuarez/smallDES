@@ -1,0 +1,105 @@
+plaintext:1 0 0 0 1 1 0 0 1 0 0 0 0 0 0 0 
+permutated input:0 0 0 1 1 0 0 1 1 0 0 0 0 0 0 0 
+Left:0 0 0 1 1 0 0 1 
+Right:1 0 0 0 0 0 0 0 
+ feistel iteration 0
+old right:
+1 0 0 0 0 0 0 0 
+newLeft:
+1 0 0 0 0 0 0 0 
+permuted key
+1 1 1 1 0 0 0 1 1 1 0 1 0 0 0 0 
+feistel f enter:
+ oldright
+1 0 0 0 0 0 0 0 
+expanded
+0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+xor
+1 0 1 1 0 0 0 1 1 1 0 1 0 0 0 1 
+inverse expanded bits:
+1 0 1 0 1 1 1 0 
+pbox:
+1 1 0 1 0 0 1 1 
+feistel f exit
+
+oldLeft:
+0 0 0 1 1 0 0 1 
+new right:
+1 1 0 0 1 0 1 0 
+ feistel iteration 1
+old right:
+1 1 0 0 1 0 1 0 
+newLeft:
+1 1 0 0 1 0 1 0 
+permuted key
+1 1 1 1 0 0 0 0 1 1 0 0 0 0 0 1 
+feistel f enter:
+ oldright
+1 1 0 0 1 0 1 0 
+expanded
+0 1 1 0 1 0 0 1 0 1 0 1 0 1 0 1 
+xor
+1 0 0 1 1 0 0 1 1 0 0 1 0 1 0 0 
+inverse expanded bits:
+1 1 1 1 1 1 0 0 
+pbox:
+1 1 0 1 1 1 1 0 
+feistel f exit
+
+oldLeft:
+1 0 0 0 0 0 0 0 
+new right:
+0 1 0 1 1 1 1 0 
+ feistel iteration 2
+old right:
+0 1 0 1 1 1 1 0 
+newLeft:
+0 1 0 1 1 1 1 0 
+permuted key
+1 1 1 1 0 0 0 0 1 1 0 0 0 0 0 0 
+feistel f enter:
+ oldright
+0 1 0 1 1 1 1 0 
+expanded
+0 0 1 0 1 0 1 1 1 1 1 1 1 1 0 0 
+xor
+1 1 0 1 1 0 1 1 0 0 1 1 1 1 0 0 
+inverse expanded bits:
+0 1 1 0 1 0 0 1 
+pbox:
+1 1 1 0 1 0 0 0 
+feistel f exit
+
+oldLeft:
+1 1 0 0 1 0 1 0 
+new right:
+0 0 1 0 0 0 1 0 
+ feistel iteration 3
+old right:
+0 0 1 0 0 0 1 0 
+newLeft:
+0 0 1 0 0 0 1 0 
+permuted key
+1 1 1 0 0 0 0 1 1 1 0 0 0 0 0 0 
+feistel f enter:
+ oldright
+0 0 1 0 0 0 1 0 
+expanded
+0 0 0 1 0 1 0 0 0 0 0 1 0 1 0 0 
+xor
+1 1 1 1 0 1 0 1 1 1 0 1 0 1 0 0 
+inverse expanded bits:
+1 1 1 0 1 0 0 1 
+pbox:
+1 1 1 0 1 0 1 0 
+feistel f exit
+
+oldLeft:
+0 1 0 1 1 1 1 0 
+new right:
+1 0 1 1 0 1 0 0 
+result
+newleft
+0 0 1 0 0 0 1 0 
+newright
+1 0 1 1 0 1 0 0 
