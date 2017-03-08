@@ -1,0 +1,51 @@
+
+ feistel iteration 0
+sbox + inverse expanded bits:
+0 1 1 1 0 1 0 0 
+pbox:
+1 0 0 1 1 1 0 0 
+feistel f exit
+
+newLeft:
+0 0 1 0 0 0 0 1 
+new right:
+0 1 1 1 0 0 0 1 
+ feistel iteration 1
+sbox + inverse expanded bits:
+0 1 1 0 0 1 0 0 
+pbox:
+1 0 0 1 1 0 0 0 
+feistel f exit
+
+newLeft:
+0 1 1 1 0 0 0 1 
+new right:
+1 0 1 1 1 0 0 1 
+ feistel iteration 2
+sbox + inverse expanded bits:
+0 0 1 1 0 0 0 0 
+pbox:
+1 0 0 0 0 1 0 0 
+feistel f exit
+
+newLeft:
+1 0 1 1 1 0 0 1 
+new right:
+1 1 1 1 0 1 0 1 
+ feistel iteration 3
+sbox + inverse expanded bits:
+0 0 1 0 1 1 0 0 
+pbox:
+1 1 0 1 0 0 0 0 
+feistel f exit
+
+newLeft:
+1 1 1 1 0 1 0 1 
+new right:
+0 1 1 0 1 0 0 1 
+result
+nopermute
+1 1 1 1 0 1 0 1 0 1 1 0 1 0 0 1 
+w permute
+1 1 1 1 1 0 0 1 0 1 1 1 0 0 0 1 
+0.000000
