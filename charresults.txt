@@ -1,0 +1,56 @@
+plaintext: 1000110010000000
+permuted plaintext: 0001100110000000
+old_left: 00011001
+old_right: 10000000
+new_left: 00011001
+new_right: 10000000
+--------------------------ITERATION0 START
+L0  10000000
+permuted key: 1111000111010000
+expanded_right: 0100000000000001
+expanded_right xor key: 1011000111010001
+sbox + inverse expanded bits: 10100100
+pbox'ed: 10010010
+00011001
+10010010
+R0 = Li-1 XOR f( Ri-1 XOR Ki) 10001011
+--------------------------ITERATION0 END
+
+--------------------------ITERATION1 START
+L1  10001011
+permuted key: 1111000011000001
+expanded_right: 1100000101010111
+expanded_right xor key: 0011000110010110
+sbox + inverse expanded bits: 10100011
+pbox'ed: 10100011
+10000000
+10100011
+R1 = Li-1 XOR f( Ri-1 XOR Ki) 00100011
+--------------------------ITERATION1 END
+
+--------------------------ITERATION2 START
+L2  00100011
+permuted key: 1111000011000000
+expanded_right: 1001010000010110
+expanded_right xor key: 0110010011010110
+sbox + inverse expanded bits: 01000111
+pbox'ed: 00111001
+10001011
+00111001
+R2 = Li-1 XOR f( Ri-1 XOR Ki) 10110010
+--------------------------ITERATION2 END
+
+--------------------------ITERATION3 START
+L3  10110010
+permuted key: 1110000111000000
+expanded_right: 0101011010010101
+expanded_right xor key: 1011011101010101
+sbox + inverse expanded bits: 10100110
+pbox'ed: 10010011
+00100011
+10010011
+R3 = Li-1 XOR f( Ri-1 XOR Ki) 10110000
+--------------------------ITERATION3 END
+
+CIPHERTEXT: 1011001010110000
+OUTPUT: 0101110001001100

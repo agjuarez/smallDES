@@ -1,3 +1,5 @@
 *.exe
 ~$manual.xlsx
 *.lnk
+~$bruteforce.xlsx
+*.xlsx

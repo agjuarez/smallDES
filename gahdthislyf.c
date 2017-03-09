@@ -1,7 +1,9 @@
 /*
 Sample
 Input: 1000110010000000 key: 111000110000
-ciphertext: 0 1 0 1 1 1 0 0 0 1 0 0 1 1 0 0
+ciphertext:
+0 1 0 1   1 1 0 0 0 1 0 0 1 1 0 0
+0101 1100 0100 1100
 Input: 1 1 0 0 1 1 0 0 1 0 0 1 1 0 0 1 key: 1 1 1 1 0 0 1 1 0 1 0 0
 ciphertext:
 1 1 1 1 1 1 0 0 1 1 0 0 0 0 1 1
@@ -225,7 +227,7 @@ int main(){
   int cipherfinal[16];
   Permute(FinalPermutation, ciphertext,cipherfinal,16);
   // PrintARRAY(cipherfinal,16);
-
+  printf("done\n" );
   clock_t end = clock();
   double time_spent = ((double)(end - begin))/ CLOCKS_PER_SEC;
   printf("\n%lf\n",time_spent );
